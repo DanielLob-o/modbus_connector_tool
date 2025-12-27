@@ -51,7 +51,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          wails build -platform ${{ matrix.platform }}
+          wails build -platform ${{ matrix.platform }} -clean -ldflags "-s -w"
 
       - name: Build Linux Packages
         if: runner.os == 'Linux'
