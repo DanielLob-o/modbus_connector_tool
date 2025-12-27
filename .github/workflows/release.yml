@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             platform: linux/amd64
             output: frontend
           - os: windows-latest
