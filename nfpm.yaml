@@ -1,0 +1,17 @@
+name: "modbus-connector"
+arch: "amd64"
+platform: "linux"
+version: "${VERSION}"
+section: "utils"
+priority: "optional"
+maintainer: "DanielLob-o"
+description: "A robust Modbus TCP & RTU connector tool"
+vendor: "DanielLob-o"
+homepage: "https://github.com/DanielLob-o/modbus_connector_tool"
+license: "MIT"
+
+contents:
+  - src: "build/bin/frontend"
+    dst: "/usr/bin/modbus-connector"
+  - src: "README.md"
+    dst: "/usr/share/doc/modbus-connector/README.md"
