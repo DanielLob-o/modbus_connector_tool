@@ -15,12 +15,13 @@ jobs:
     strategy:
       matrix:
         include:
+        include:
           - os: ubuntu-22.04
             platform: linux/amd64
-            output: frontend
+            output: modbus-connector
           - os: windows-latest
             platform: windows/amd64
-            output: frontend.exe
+            output: modbus-connector.exe
 
     steps:
       - name: Checkout repository

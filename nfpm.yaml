@@ -11,7 +11,7 @@ homepage: "https://github.com/DanielLob-o/modbus_connector_tool"
 license: "MIT"
 
 contents:
-  - src: "build/bin/frontend"
+  - src: "build/bin/modbus-connector"
     dst: "/usr/bin/modbus-connector"
   - src: "README.md"
     dst: "/usr/share/doc/modbus-connector/README.md"
