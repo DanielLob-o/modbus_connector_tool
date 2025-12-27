@@ -1,0 +1,329 @@
+/* Use CSS Variables from style.scss */
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-base-200);
+    border-right: 1px solid var(--color-base-300);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 1px;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.nav li {
+    padding: 12px 24px;
+    color: var(--color-base-content);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav li:hover {
+    background-color: var(--color-base-300);
+    opacity: 1;
+}
+
+.nav li.active {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+    opacity: 1;
+}
+
+.nav hr {
+    border: none;
+    border-top: 1px solid var(--color-base-300);
+    margin: 10px 20px;
+}
+
+.nav .logout {
+    margin-top: auto;
+    color: var(--color-error);
+    opacity: 1;
+}
+
+.nav .logout:hover {
+    background-color: color-mix(in srgb, var(--color-error) 10%, transparent);
+    color: var(--color-error);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Prevent horizontal scroll */
+}
+
+.top-bar {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-base-300);
+    background-color: var(--color-base-100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.top-bar h3 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.connection-status {
+    font-size: 0.8rem;
+    color: var(--color-success);
+    background-color: color-mix(in srgb, var(--color-success) 10%, transparent);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.theme-toggle {
+    background: var(--color-base-200);
+    border: 1px solid var(--color-base-300);
+    color: var(--color-base-content);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+    background: var(--color-base-300);
+}
+
+.content-area {
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+    overflow-y: auto;
+    /* Allow scrolling content */
+    align-items: flex-start;
+    /* Prevent stretching */
+}
+
+.card {
+    background-color: var(--color-base-200);
+    border-radius: var(--radius-box);
+    border: 1px solid var(--color-base-300);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.form-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    position: sticky;
+    top: 0;
+}
+
+.result-card {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    /* Allow it to grow but not overflow weirdly */
+    height: auto;
+    min-height: 500px;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-base-content);
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-base-100);
+    border: 1px solid var(--color-base-300);
+    border-radius: 6px;
+    color: var(--color-base-content);
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--color-primary);
+    border-color: transparent;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-group button {
+    flex: 1;
+    padding: 8px;
+    background-color: var(--color-base-100);
+    border: 1px solid var(--color-base-300);
+    color: var(--color-base-content);
+    cursor: pointer;
+    border-radius: 6px;
+    opacity: 0.7;
+}
+
+.toggle-group button.active {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+    border-color: var(--color-primary);
+    opacity: 1;
+}
+
+.btn-execute {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-primary-content);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.btn-execute:hover {
+    filter: brightness(1.1);
+}
+
+/* Table Styles */
+.table-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-base-300);
+    border-radius: 8px;
+    background-color: var(--color-base-100);
+    max-height: 500px;
+    /* Limit height if too many rows */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th {
+    background-color: var(--color-base-200);
+    padding: 10px;
+    text-align: left;
+    color: var(--color-base-content);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid var(--color-base-300);
+}
+
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--color-base-300);
+    color: var(--color-base-content);
+}
+
+tr:hover td {
+    background-color: var(--color-base-200);
+}
+
+.value-cell {
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.mono {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--color-base-content);
+    opacity: 0.7;
+}
+
+/* Logs */
+.log-console {
+    /* Initially flex:1 in old design, but if results exist, we want it smaller */
+    background-color: var(--color-base-100);
+    border-radius: 6px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    overflow-y: auto;
+    border: 1px solid var(--color-base-300);
+    min-height: 150px;
+    max-height: 200px;
+    color: var(--color-base-content);
+}
+
+.log-header {
+    font-size: 0.8rem;
+    color: var(--color-base-content);
+    opacity: 0.6;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.log-entry {
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--color-base-300);
+    padding-bottom: 2px;
+}
+
+.timestamp {
+    color: var(--color-base-content);
+    opacity: 0.5;
+    margin-right: 8px;
+}
+
+.type {
+    color: var(--color-info);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.type.error {
+    color: var(--color-error);
+}
+
+.msg {
+    color: var(--color-base-content);
+    word-break: break-all;
+}

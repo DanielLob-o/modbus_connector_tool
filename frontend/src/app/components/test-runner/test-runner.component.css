@@ -1,0 +1,166 @@
+.test-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    background: rgba(40, 40, 50, 0.6);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-content h2 {
+    margin: 0;
+    font-weight: 500;
+    color: #00d2ff;
+}
+
+.header-content p {
+    margin: 5px 0 0;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.back-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+.test-config {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.config-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.config-row label {
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.config-row input,
+.config-row select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.config-row input.short {
+    width: 80px;
+}
+
+.controls {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.btn-run {
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-run:hover {
+    transform: scale(1.05);
+}
+
+.btn-run:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.step-card {
+    background: rgba(30, 30, 35, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+}
+
+.step-card.running {
+    border-color: #00d2ff;
+    background: rgba(0, 210, 255, 0.05);
+}
+
+.step-card.pass {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, 0.05);
+}
+
+.step-card.fail {
+    border-color: #f87171;
+    background: rgba(248, 113, 113, 0.05);
+}
+
+.step-status .icon {
+    font-size: 1.5rem;
+}
+
+.step-info {
+    flex: 1;
+}
+
+.step-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #eee;
+}
+
+.step-message {
+    font-size: 0.85rem;
+    color: #aaa;
+    font-family: monospace;
+}

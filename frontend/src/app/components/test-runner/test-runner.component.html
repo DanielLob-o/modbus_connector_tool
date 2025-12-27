@@ -1,0 +1,48 @@
+<div class="test-container">
+    <div class="header">
+        <div class="header-left">
+            <button class="back-btn" (click)="goBack()" title="Back to Dashboard">←</button>
+            <div class="header-content">
+                <h2>E2E Test Runner</h2>
+                <p>Simulates user actions to verify system integrity.</p>
+            </div>
+        </div>
+        <div class="test-config">
+            <div class="config-row">
+                <label>Mode:</label>
+                <select [(ngModel)]="mode">
+                    <option value="TCP">TCP</option>
+                    <option value="RTU">RTU</option>
+                </select>
+            </div>
+            <div class="config-row" *ngIf="mode === 'TCP'">
+                <input [(ngModel)]="tcpAddress" placeholder="localhost:5020">
+            </div>
+            <div class="config-row" *ngIf="mode === 'RTU'">
+                <input [(ngModel)]="rtuAddress" placeholder="COM1" class="short">
+                <input [(ngModel)]="baudRate" type="number" placeholder="9600" class="short">
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-run" (click)="runTests()" [disabled]="isRunning">
+            {{ isRunning ? 'Running Tests...' : 'Start Simulation' }}
+        </button>
+    </div>
+
+    <div class="steps-list">
+        <div class="step-card" *ngFor="let step of steps" [ngClass]="step.status.toLowerCase()">
+            <div class="step-status">
+                <span class="icon" *ngIf="step.status === 'PENDING'">⚪</span>
+                <span class="icon" *ngIf="step.status === 'RUNNING'">🔄</span>
+                <span class="icon" *ngIf="step.status === 'PASS'">✅</span>
+                <span class="icon" *ngIf="step.status === 'FAIL'">❌</span>
+            </div>
+            <div class="step-info">
+                <div class="step-name">{{ step.name }}</div>
+                <div class="step-message">{{ step.message }}</div>
+            </div>
+        </div>
+    </div>
+</div>

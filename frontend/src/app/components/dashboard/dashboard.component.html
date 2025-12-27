@@ -1,0 +1,107 @@
+<div class="dashboard-container">
+    <div class="sidebar">
+        <div class="logo">Modbus Tools</div>
+        <ul class="nav">
+            <li (click)="operation = 'ReadCoils'" [class.active]="operation === 'ReadCoils'">Read Coils (0x01)</li>
+            <li (click)="operation = 'ReadDiscrete'" [class.active]="operation === 'ReadDiscrete'">Read Discrete Inputs
+                (0x02)</li>
+            <li (click)="operation = 'ReadHolding'" [class.active]="operation === 'ReadHolding'">Read Holding Regs
+                (0x03)</li>
+            <li (click)="operation = 'ReadInput'" [class.active]="operation === 'ReadInput'">Read Input Regs (0x04)</li>
+            <hr>
+            <li (click)="operation = 'WriteSingleCoil'" [class.active]="operation === 'WriteSingleCoil'">Write Single
+                Coil (0x05)</li>
+            <li (click)="operation = 'WriteSingleReg'" [class.active]="operation === 'WriteSingleReg'">Write Single Reg
+                (0x06)</li>
+            <li (click)="operation = 'WriteMultiCoils'" [class.active]="operation === 'WriteMultiCoils'">Write Multi
+                Coils (0x0F)</li>
+            <li (click)="operation = 'WriteMultiRegs'" [class.active]="operation === 'WriteMultiRegs'">Write Multi Regs
+                (0x10)</li>
+            <hr>
+            <li routerLink="/test-runner" routerLinkActive="active">Run E2E Simulation</li>
+            <li (click)="disconnect()" class="logout">Disconnect</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="title-group">
+                <h3>{{ getOperationTitle() }}</h3>
+                <div class="connection-status">Connected</div>
+            </div>
+            <div class="theme-controls">
+                <button class="theme-toggle" (click)="toggleTheme()">
+                    {{ themeService.getTheme() === 'dark' ? '☀️ Light' : '🌙 Dark' }}
+                </button>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="card form-card">
+                <div class="input-group">
+                    <label>Starting Address (0-based)</label>
+                    <input type="number" [(ngModel)]="address" min="0">
+                </div>
+
+                <div class="input-group" *ngIf="isReadOperation()">
+                    <label>Quantity</label>
+                    <input type="number" [(ngModel)]="quantity" min="1" value="1">
+                </div>
+
+                <div class="input-group" *ngIf="operation === 'WriteSingleCoil'">
+                    <label>Value (0x0000 or 0xFF00)</label>
+                    <div class="toggle-group">
+                        <button [class.active]="singleValue === 65280" (click)="singleValue = 65280">ON</button>
+                        <button [class.active]="singleValue === 0" (click)="singleValue = 0">OFF</button>
+                    </div>
+                </div>
+
+                <div class="input-group" *ngIf="operation === 'WriteSingleReg'">
+                    <label>Value (uint16)</label>
+                    <input type="number" [(ngModel)]="singleValue" min="0" max="65535">
+                </div>
+
+                <div class="input-group" *ngIf="isWriteMulti()">
+                    <label>Values (Comma separated)</label>
+                    <input type="text" [(ngModel)]="multiValuesStr" placeholder="10, 20, 30...">
+                </div>
+
+                <button class="btn-execute" (click)="execute()">Execute</button>
+            </div>
+
+            <div class="card result-card">
+                <h4>Results</h4>
+
+                <div class="table-container" *ngIf="parsedResults.length > 0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Address</th>
+                                <th>Value</th>
+                                <th>Hex</th>
+                                <th>Binary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of parsedResults">
+                                <td>{{ row.address }}</td>
+                                <td class="value-cell">{{ row.value }}</td>
+                                <td class="mono">{{ row.hex }}</td>
+                                <td class="mono">{{ row.binary }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="log-console" [class.shrunk]="parsedResults.length > 0">
+                    <div class="log-header">Log History</div>
+                    <div *ngFor="let log of logs" class="log-entry">
+                        <span class="timestamp">{{log.time}}</span>
+                        <span class="type" [class.error]="log.error">{{log.type}}</span>
+                        <span class="msg">{{log.message}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
