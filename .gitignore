@@ -1,0 +1,19 @@
+# IDEs
+.idea
+.vscode
+.DS_Store
+
+# Wails / Go
+build/
+bin/
+tmp/
+frontend/dist/
+frontend/node_modules/
+
+# Python (Simulator)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
