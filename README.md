@@ -1,6 +1,6 @@
 # Modbus Connector Tool
 
-A robust Modbus Connector Tool built with [Wails](https://wails.io) (Go) and Angular. This application serves as a GUI wrapper for the [goburrow/modbus](https://github.com/goburrow/modbus) library, allowing users to interact with Modbus devices via TCP and Serial (RTU) protocols.
+A robust Modbus Connector Tool built with [Wails](https://wails.io) (Go) and Angular. This application serves as a GUI wrapper for the [simonvetter/modbus](https://github.com/simonvetter/modbus) library, allowing users to interact with Modbus devices via TCP and Serial (RTU) protocols.
 
 ## Features
 
